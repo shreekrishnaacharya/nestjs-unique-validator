@@ -4,7 +4,7 @@
     "description": "this pakckage validates the unique attribute in dtos",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "npx tsc -b && cp README.md release/ && cp README.md ../ && cp release/* ../publish/"
     },
     "repository": {
         "type": "git",
@@ -21,7 +21,12 @@
     "author": "Shree Krishna Acharya",
     "license": "MIT",
     "dependencies": {
-        "@nestjs/typeorm": "^10.0.2"
+        "@nestjs/typeorm": "^10.0.2",
+        "mysql2": "^2.3.3",
+        "@nestjs/class-validator": "^0.13.4",
+        "class-validator": "^0.14.0",
+        "class-transformer": "^0.5.1",
+        "@nestjs/common": "^10.0.0"
     },
     "devDependencies": {
         "@types/mysql": "^2.15.21",
