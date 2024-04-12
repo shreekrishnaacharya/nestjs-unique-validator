@@ -1,0 +1,27 @@
+{
+  "name": "nestjs-unique-validator",
+  "version": "1.0.0",
+  "description": "this pakckage validates the unique attribute in dtos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shreekrishnaacharya/nestjs-unique-validator.git"
+  },
+  "keywords": [
+    "unique",
+    "validator",
+    "dot",
+    "validator",
+    "nestjs",
+    "package"
+  ],
+  "author": "Shree Krishna Acharya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shreekrishnaacharya/nestjs-unique-validator/issues"
+  },
+  "homepage": "https://github.com/shreekrishnaacharya/nestjs-unique-validator#readme"
+}
