@@ -16,10 +16,11 @@ export class IsUniqueConstraint implements ValidatorConstraintInterface {
     async validate(value: any, args?: ValidationArguments): Promise<boolean> {
         const [options] = args?.constraints as string[]
         const { table, column, updateId } = options as unknown as IsUniqeInterface
+        const colName = column ?? args.property
         const dataExist = await this.entityManager
             .getRepository(table)
             .createQueryBuilder(table)
-            .where({ [column]: value })
+            .where({ [colName]: value })
         if (updateId) {
             const id = args?.object[updateId]
             if (id) {
