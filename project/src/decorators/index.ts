@@ -4,11 +4,15 @@ import { ValidationOptions, registerDecorator } from "class-validator";
 import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator';
 import { Injectable } from '@nestjs/common'
 import { EntityManager, Not } from 'typeorm'
+import { InjectEntityManager } from "@nestjs/typeorm";
 
 @ValidatorConstraint({ name: ISUNIQUECONSTRANTNAME, async: true })
 @Injectable()
 export class IsUniqueConstraint implements ValidatorConstraintInterface {
-    constructor(private readonly entityManager: EntityManager) { }
+    constructor(
+        @InjectEntityManager()
+        private readonly entityManager: EntityManager
+    ) { }
     async validate(value: any, args?: ValidationArguments): Promise<boolean> {
         const [options] = args?.constraints as string[]
         const { table, column, updateId } = options as unknown as IsUniqeInterface
@@ -27,7 +31,6 @@ export class IsUniqueConstraint implements ValidatorConstraintInterface {
 
     defaultMessage(validationArguments: ValidationArguments): string {
         const field = validationArguments.property
-
         return `${capitalizeFirstLetter(field)} already exist.`
     }
 }
