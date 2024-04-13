@@ -33,10 +33,11 @@ let IsUniqueConstraint = class IsUniqueConstraint {
         return __awaiter(this, void 0, void 0, function* () {
             const [options] = args === null || args === void 0 ? void 0 : args.constraints;
             const { table, column, updateId } = options;
+            const colName = column !== null && column !== void 0 ? column : args.property;
             const dataExist = yield this.entityManager
                 .getRepository(table)
                 .createQueryBuilder(table)
-                .where({ [column]: value });
+                .where({ [colName]: value });
             if (updateId) {
                 const id = args === null || args === void 0 ? void 0 : args.object[updateId];
                 if (id) {

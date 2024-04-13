@@ -1,6 +1,6 @@
 {
     "name": "@sksharma72000/nestjs-unique-validator",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "this pakckage validates the unique attribute in dtos",
     "main": "index.js",
     "scripts": {
