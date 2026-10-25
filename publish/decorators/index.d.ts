@@ -1,7 +1,7 @@
 import { IsUniqeInterface } from "../interfaces";
 import { ValidationOptions } from "class-validator";
-import { ValidatorConstraintInterface, ValidationArguments } from 'class-validator';
-import { EntityManager } from 'typeorm';
+import { ValidatorConstraintInterface, ValidationArguments } from "class-validator";
+import { EntityManager } from "typeorm";
 export declare class IsUniqueConstraint implements ValidatorConstraintInterface {
     private readonly entityManager;
     constructor(entityManager: EntityManager);

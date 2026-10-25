@@ -30,18 +30,23 @@ let IsUniqueConstraint = class IsUniqueConstraint {
         this.entityManager = entityManager;
     }
     validate(value, args) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const [options] = args === null || args === void 0 ? void 0 : args.constraints;
-            const { table, column, updateId } = options;
+            const { table, column, updateId, objectId } = options;
+            if (typeof value === "object" && objectId) {
+                value = value[objectId];
+            }
             const colName = column !== null && column !== void 0 ? column : args.property;
             const dataExist = yield this.entityManager
                 .getRepository(table)
                 .createQueryBuilder(table)
                 .where({ [colName]: value });
+            const contitions = (_a = options === null || options === void 0 ? void 0 : options.conditions) !== null && _a !== void 0 ? _a : {};
             if (updateId) {
                 const id = args === null || args === void 0 ? void 0 : args.object[updateId];
                 if (id) {
-                    dataExist.andWhere({ [updateId]: (0, typeorm_1.Not)(id) });
+                    dataExist.andWhere(Object.assign({ [updateId]: (0, typeorm_1.Not)(id) }, contitions));
                 }
             }
             return !(yield dataExist.getExists());
